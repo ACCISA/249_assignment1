@@ -26,6 +26,7 @@ public class LadderAndSnake {
 	private int ladder = 500;
 	private Player[] players;
 	public static int nbTurns;
+	public static boolean isManual;
 	/**
 	 * Constructor for the LadderAndSnake class.
 	 * 
@@ -144,9 +145,19 @@ public class LadderAndSnake {
 		return 0;
 	}
 	
+	private void waitForInput(Player p) {
+		if (!(LadderAndSnake.isManual)) return;
+		Scanner input = new Scanner(System.in);
+		while(true) {
+			System.out.println("It is " + p.getName() + "'s turn. Press 'f'.");
+			if (!(input.next().equals("f"))) continue;
+			break;
+		}
+	}
+	
 	// plays the game
 	public void play() {
-		
+		Board boardOut = new Board();
 		for (int i = 0; i < nbPlayers; i++) {
 			Player.nbPlayersCreated++;
 			Player player = new Player();
@@ -158,33 +169,15 @@ public class LadderAndSnake {
 		Events event = new Events();
 		System.out.println("------");
 		while (!(Player.isGameDone)) {
-			int first_player = flipDice();
-			System.out.println(players[0].getName() + " rolled " + first_player);
-			LadderAndSnake.nbTurns++;
-			players[0].updatePosition(first_player);
-			int second_player = flipDice();
-			System.out.println(players[1].getName() + " rolled " + second_player);
-			LadderAndSnake.nbTurns++;
-			players[1].updatePosition(second_player);
-
+			for (int i = 0; i < nbPlayers; i++) {
+				int flip = flipDice();
+				System.out.println(players[i].getName() + " rolled " + flip);
+				LadderAndSnake.nbTurns++;
+				players[i].updatePosition(flip);
+				boardOut.SetLocations(players[i]);
+				boardOut.Show();
+			}
 		}
-//		for (int i = 0; i < 6; i++) {
-//			askUserToFill();
-//			int flip = flipDice();
-//			System.out.println(flip);
-//		}
-		
-//		for (String[] x : aBoard) {
-//			for (String y: x) {
-//				if (y.equals("")) {
-//					System.out.print(" " + "-");
-//					continue;
-//				}
-//				System.out.print(" " + y);
-//			}
-//			System.out.println();
-//		}
-
 	}
 
 	public int getNbPlayers() {

@@ -1,6 +1,7 @@
 package lab1_comp249;
 
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Events extends LadderAndSnake{
 	public final static HashMap<String,String> events = new HashMap<String, String>();
@@ -36,11 +37,12 @@ public class Events extends LadderAndSnake{
 	}
 
 	public int checkForEvent(int location, Player player, boolean recursive) {
+
 		if (location > 120) System.exit(0);
 		if (location > 100) { // player went over 100 go back
 			int locationBackward = 100 - (location - 100);
 			checkForEvent(locationBackward, player, true);
-			
+			return -1;
 			
 		}
 		

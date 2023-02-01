@@ -32,7 +32,7 @@ public class Player extends LadderAndSnake{
 	
 	public boolean equals(Object player) {
 		if (player == null) return false;
-		if (!(player.getClass().equals(this))) return false;
+		if (!(player.getClass().equals(this.getClass()))) return false;
 		if (!(player == this)) return false;
 		return true;
 	}
