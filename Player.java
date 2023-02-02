@@ -1,4 +1,4 @@
-package lab1_comp249;
+package comp249_assignement1;
 
 import java.util.Scanner;
 
@@ -12,6 +12,7 @@ public class Player extends LadderAndSnake{
 		Scanner input = new Scanner(System.in);
 		System.out.println("Please Insert a name Player " + nbPlayersCreated );
 		return input.next();
+		
 	}
 	
 	
@@ -20,6 +21,9 @@ public class Player extends LadderAndSnake{
 		int positionExpect = this.position + position;
 		Events a = new Events();
 		int eventLocation = a.checkForEvent(positionExpect,this,false);
+		if (eventLocation == -1) {
+			return;
+		}
 		this.position = eventLocation;
 
 	}

@@ -1,4 +1,4 @@
-package lab1_comp249;
+package comp249_assignement1;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,7 @@ public class Board {
 	private ArrayList<Player> plys = new ArrayList<>();
 	
 	private String[][] board = new String[][] {
-		{"L8","","S5","S6","","S7","","S8","","L9"},
+		{"L8","☐","S5","S6","","S7","","S8","","L9"},
 		{"","","","L5","","","","","",""},
 		{"L8","S3","S5","","S6","","","","","L9"},
 		{"","","","S4","","","L7","S8","",""},
@@ -22,8 +22,12 @@ public class Board {
 	
 	private int[] LocationToIndex(int loc) { // TODO
 		int row = (loc -1)/10;
-		int col = (loc -1)%10;
-
+		int col = (loc -1)%10;//9
+		row = 9 - row; // image the position on the board
+		if (loc > 10) {
+			if (row % 2 != 0)return new int[] {row,col}; // odd rows ignore
+			col = 9 - col;
+		}
 		return new int[] {row,col};
 	}
 	
@@ -47,9 +51,11 @@ public class Board {
 		}
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[i].length; j++) {
+				//int smt = 0;
 				for (int k = 0; k < plys.size(); k++){
+				//	smt++;
 					if (i == locations[k][0] && j == locations[k][1]) {
-						System.out.print("PP");
+						System.out.print(plys.get(k).getName().substring(0,2));
 						continue;
 					}
 				}

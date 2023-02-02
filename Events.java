@@ -1,4 +1,4 @@
-package lab1_comp249;
+package comp249_assignement1;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -38,12 +38,10 @@ public class Events extends LadderAndSnake{
 
 	public int checkForEvent(int location, Player player, boolean recursive) {
 
-		if (location > 120) System.exit(0);
 		if (location > 100) { // player went over 100 go back
 			int locationBackward = 100 - (location - 100);
-			checkForEvent(locationBackward, player, true);
-			return -1;
-			
+			System.out.println("YOU WENT OVER GO BACK TO " + locationBackward + "---------------------------------------------");
+			location = locationBackward;
 		}
 		
 		if (location == 100) { // check if u win
@@ -52,11 +50,16 @@ public class Events extends LadderAndSnake{
 		}
 		if (LadderAndSnake.nbTurns != 1) { // to avoid NullPointerException when only 1 turn is done
 			for (int i = 0; i < Player.allPlayers.length; i++) { // check if u land on another players location
-				if (player.equals(Player.allPlayers[i])) continue;
+				if (player.equals(Player.allPlayers[i])) {
+					System.out.println(player.getName()+"; loc: " + location);
+				} else {
+					System.out.println(Player.allPlayers[i].getName() + "; loc: " + Player.allPlayers[i].getPosition());
+				}
 				if (player.getName().equals(Player.allPlayers[i].getName())) continue;
-				if (Player.allPlayers[i].getPosition() == player.getPosition()) {
+				if (Player.allPlayers[i].getPosition() == location) {
 					System.out.println("Pos: " + location);
-					return 0;
+					Player.allPlayers[i].setPosition(0);//send him back to 0
+					return location;
 				}
 			}
 		}
