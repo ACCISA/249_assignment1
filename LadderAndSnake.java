@@ -75,7 +75,9 @@ public class LadderAndSnake {
         
     }
 	
-	
+	/*
+	 * this method returns a random integer value between 1 and 6.
+	 */
 	private int flipDice() {
 		final int min = 1;
 		final int max = 6;
@@ -83,13 +85,20 @@ public class LadderAndSnake {
 		return (int)(Math.random() * range) + min;
 	}
 	
-	
+	/*
+	 * this method reverses the players position and is void
+	 */
 	private void reversePlayers() {
 		Player temp = players[0];
 		players[0] = players[1];
 		players[1] = temp;
 	}
-
+	
+	/*
+	 *  This method takes in a Player object to get the player's name and to print a message asking for user input.
+	 *  If boolean called IsManual is true this method will print the message asking for user input.
+	 *  If IsManual is set to false this method will ignore. 
+	 */
 	private void waitForInput(Player p) {
 		if (!(LadderAndSnake.isManual)) return;
 		Scanner input = new Scanner(System.in);
@@ -103,6 +112,12 @@ public class LadderAndSnake {
 	}
 	
 	// plays the game
+	/*
+	 * This method is void. It creates a board object, creates the players and sets their order. 
+	 * After setting the order of turns it alternates between the players and starts the game.
+	 * At every player's turn it checks for any events(e.g. snakes or ladders) and it updates their position and location.
+	 * It prints the board after each turn.
+	 */
 	public void play() {
 		Board boardOut = new Board();
 		for (int i = 0; i < nbPlayers; i++) {
@@ -128,10 +143,16 @@ public class LadderAndSnake {
 		}
 	}
 
+	/*
+	 * getter that returns the integer number of players
+	 */
 	public int getNbPlayers() {
 		return nbPlayers;
 	}
 	
+	/*
+	 * getter that returns the location of the array of players
+	 */
 	public Player[] getPlayers() {
 		return players;
 	}
