@@ -19,7 +19,9 @@ public class Board {
 		{"L1","","","L2","","S1","","","L3",""},
 	
 	};
-	
+	/*
+	 * takes the location as a parameter, finds its corresponding row and column on the board and returns the array at those indices.
+	 */
 	private int[] LocationToIndex(int loc) { // TODO
 		int row = (loc -1)/10;
 		int col = (loc -1)%10;//9
