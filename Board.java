@@ -7,7 +7,7 @@ public class Board {
 	private ArrayList<Player> plys = new ArrayList<>();
 	
 	private String[][] board = new String[][] {
-		{"L8","☐","S5","S6","","S7","","S8","","L9"},
+		{"L8","","S5","S6","","S7","","S8","","L9"},
 		{"","","","L5","","","","","",""},
 		{"L8","S3","S5","","S6","","","","","L9"},
 		{"","","","S4","","","L7","S8","",""},

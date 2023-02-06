@@ -8,7 +8,7 @@ public class Driver {
 	public static void main(String[] args){
 		
 		LadderAndSnake a = new LadderAndSnake(6);
-		LadderAndSnake.isManual = false; // to 
+		LadderAndSnake.isManual = true; // to 
 		a.play();
 		
 

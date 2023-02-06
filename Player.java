@@ -2,6 +2,12 @@ package comp249_assignement1;
 
 import java.util.Scanner;
 
+
+/**
+ * 
+ * 
+ *
+ */
 public class Player extends LadderAndSnake{
 	private String name;
 	private int position;
@@ -10,14 +16,20 @@ public class Player extends LadderAndSnake{
 	public static Player[] allPlayers;
 	
 	/*
-	 * This method asks for user input.
+	 * This method asks for the user to input their player name.
 	 * Returns a String indicating the name of the player entered by the user.
 	 */
 	private String writeName() {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Please Insert a name Player " + nbPlayersCreated );
-		return input.next();
-		
+		while(true) {
+			String name = input.next();
+			if (name.length() < 3) {
+				System.out.println("Please insert a name with at least 3 characters");
+				continue;
+			}
+			return name;			
+		}
 	}
 	
 	/*

@@ -3,17 +3,32 @@ package comp249_assignement1;
 import java.util.Scanner;
 
 /**
+ * This class represents the Ladder and Snake game.
+ * Creating an instance of this class will create the game. All necessary methods for the game functionalities are called within this class.
  * 
  * Attributes:
- * array called players to track the players information.
- * boolean called isManual will be used to ask users to enter 'f' to flip dice. 
+ * 
+ * 
+ *  * 
+ * @param
+ * 
  *
  */
 public class LadderAndSnake {
+	/**
+	 * int nbPlayers, the amount of players playing (currently limited to 2)
+	 */
+	private int nbPlayers; 
+	/**
+     * Player[] player, the player array of player objects. The lenght and the contents of this array depends on nbPlayers
 
-	private int nbPlayers;
+	 */
 	private Player[] players;
 	public static int nbTurns;
+	/**
+	 * determines if the game automatically plays out or if it is manually played 
+
+	 */
 	public static boolean isManual;
 	/**
 	 * Constructor for the LadderAndSnake class.
@@ -33,17 +48,26 @@ public class LadderAndSnake {
 		System.exit(0);
 	}
 	
+	
+	/**
+	 * Default constructor for the LadderAndSnake that will set the nbPlayers to 2
+	 * 
+	 * 
+	 * 
+	 */
 	public LadderAndSnake() {
 		this.nbPlayers = 2;
 		players = new Player[2];
 	}
 
-	/*
-	 * This method does not return anything.
+	/**
+	 * 
 	 * Sets order of who starts by rolling the dice and checking who rolled a greater number.
 	 * If both players roll the same dice it increments the number of attempts and goes back in the loop.
 	 * Prints the name of who starts and breaks the while loop.
-	 * Order is initially set to Player 1 and then Player 2. If Player 2 is greater then reversePlayer method is called.
+	 * 
+	 * 
+	 * @return void
 	 * 
 	 */
     private void setPlayOrder() {
@@ -75,8 +99,10 @@ public class LadderAndSnake {
         
     }
 	
-	/*
+	/**
 	 * this method returns a random integer value between 1 and 6.
+	 * 
+	 * @return int between 1 and 6
 	 */
 	private int flipDice() {
 		final int min = 1;
@@ -85,8 +111,10 @@ public class LadderAndSnake {
 		return (int)(Math.random() * range) + min;
 	}
 	
-	/*
-	 * this method reverses the players position and is void
+	/**
+	 * Reverses the players position
+	 * 
+	 * @return void
 	 */
 	private void reversePlayers() {
 		Player temp = players[0];
@@ -94,10 +122,15 @@ public class LadderAndSnake {
 		players[1] = temp;
 	}
 	
-	/*
-	 *  This method takes in a Player object to get the player's name and to print a message asking for user input.
-	 *  If boolean called IsManual is true this method will print the message asking for user input.
-	 *  If IsManual is set to false this method will ignore. 
+	/**
+	 *  This method uses the Scanner to wait for the player to type 'f' to continue playing.
+	 *  
+	 *  If the static variable isManual is set to false this method will be ignored
+	 *  
+	 *  
+	 *  @param Player, current player that is rolling the dice
+	 *  
+	 *  @return void
 	 */
 	private void waitForInput(Player p) {
 		if (!(LadderAndSnake.isManual)) return;
@@ -108,17 +141,20 @@ public class LadderAndSnake {
 			break;
 			
 		}
-		input.close();
 	}
 	
-	// plays the game
-	/*
-	 * This method is void. It creates a board object, creates the players and sets their order. 
-	 * After setting the order of turns it alternates between the players and starts the game.
-	 * At every player's turn it checks for any events(e.g. snakes or ladders) and it updates their position and location.
-	 * It prints the board after each turn.
+	/**
+	 * This method will start the ladder and snake game.It creates a board object, creates the players and sets their order. 
+	 * 
+	 * At every player's dice roll it checks for any events depending on their current position (e.g. snakes, ladders or other players) and it updates their position and board location.
+	 * The board is printed after each turn. The game will only end when a player reaches the board position 100.
+	 * 
+	 * @return void
 	 */
+
 	public void play() {
+		Events event = new Events();
+
 		Board boardOut = new Board();
 		for (int i = 0; i < nbPlayers; i++) {
 			Player.nbPlayersCreated++;
@@ -143,21 +179,17 @@ public class LadderAndSnake {
 		}
 	}
 
-	/*
+	/**
 	 * getter that returns the integer number of players
+	 * 
+	 * @return numbers of players playing the game
 	 */
 	public int getNbPlayers() {
 		return nbPlayers;
 	}
 	
-	/*
-	 * getter that returns the location of the array of players
-	 */
-	public Player[] getPlayers() {
-		return players;
-	}
-	
-	
+
+
 	
 }
 	
