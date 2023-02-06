@@ -51,9 +51,9 @@ public class Events extends LadderAndSnake{
 		if (LadderAndSnake.nbTurns != 1) { // to avoid NullPointerException when only 1 turn is done
 			for (int i = 0; i < Player.allPlayers.length; i++) { // check if u land on another players location
 				if (player.equals(Player.allPlayers[i])) {
-					System.out.println(player.getName()+"; loc: " + location);
+					System.out.println(player.getName()+" is currently at tile #" + location);
 				} else {
-					System.out.println(Player.allPlayers[i].getName() + "; loc: " + Player.allPlayers[i].getPosition());
+					System.out.println(Player.allPlayers[i].getName() + " is currently at tile #" + Player.allPlayers[i].getPosition());
 				}
 				if (player.getName().equals(Player.allPlayers[i].getName())) continue;
 				if (Player.allPlayers[i].getPosition() == location) {

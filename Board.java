@@ -46,30 +46,39 @@ public class Board {
 	}
 	
 	public void Show() {// TODO
+		System.out.println("===================================================");
 		int[][] locations = new int[plys.size()][2];
 		for (int i = 0; i < plys.size(); i++) {
 			int[] boardLocation = LocationToIndex(plys.get(i).getPosition());
 			locations[i] = boardLocation;
 		}
 		for (int i = 0; i < board.length; i++) {
+			System.out.print("| ");
 			for (int j = 0; j < board[i].length; j++) {
-				//int smt = 0;
+				boolean isPlayer = false;
 				for (int k = 0; k < plys.size(); k++){
 				//	smt++;
 					if (i == locations[k][0] && j == locations[k][1]) {
-						System.out.print(plys.get(k).getName().substring(0,2));
+						System.out.print(plys.get(k).getName().substring(0,2)+" | ");
+						isPlayer = true;
 						continue;
 					}
 				}
+				if (isPlayer) continue;
 				if (board[i][j].equals("")) {
-					System.out.print("-- ");
+					System.out.print("__ | ");
 					continue;
 				}
-				System.out.print(board[i][j]+" ");
+				System.out.print(board[i][j]+" | ");
 				
 			}
+//			System.out.println("--------------------------------");
 			System.out.println();
+			System.out.println("___________________________________________________");
+
 		}
+		System.out.println("===================================================");
+
 	}
 	
 	
