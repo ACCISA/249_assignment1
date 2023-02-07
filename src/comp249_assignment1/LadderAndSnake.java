@@ -78,9 +78,9 @@ public class LadderAndSnake {
     private void setPlayOrder() {
         int attempts=0;
         do{
-        	attempts++;
+        	attempts++; // increment attempts
        
-        	int[] diceRolls = new int[2];
+        	int[] diceRolls = new int[2]; // create an array of dice rolls depending on the number of players
         	for (int i = 0; i < nbPlayers; i++) {
         		int roll = flipDice();
         		diceRolls[i] = roll;
