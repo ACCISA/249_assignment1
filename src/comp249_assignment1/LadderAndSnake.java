@@ -2,6 +2,11 @@ package comp249_assignment1;
 
 import java.util.Scanner;
 
+// Name (s) and ID (s) Aniss Chalah 40251256 Zubeda Wajid Hamid 40246990
+// COMP249
+// Assignment # 1
+// Due Date 2/6/2023
+
 /**
  * This class represents the Ladder and Snake game.
  * Creating an instance of this class will create the game. All necessary methods for the game functionalities are called within this class.
