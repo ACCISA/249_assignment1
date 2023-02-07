@@ -3,6 +3,10 @@ package comp249_assignment1;
 import java.util.HashMap;
 import java.util.Scanner;
 
+// Name (s) and ID (s) Aniss Chalah 40251256 Zubeda Wajid Hamid 40246990
+// COMP249
+// Assignment # 1
+// Due Date 2/6/2023
 
 /**
  * This class represents the events of the snake and ladders game. It extends the LadderAndSnake class.
