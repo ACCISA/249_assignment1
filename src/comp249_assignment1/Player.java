@@ -56,9 +56,9 @@ public class Player extends LadderAndSnake{
 	 * @return void
 	 */
 	public void updatePosition(int position) {
-		int positionExpect = this.position + position;
+		int positionExpect = this.position + position; //add the dice number to the position.
 		Events a = new Events();
-		int eventLocation = a.checkForEvent(positionExpect,this);
+		int eventLocation = a.checkForEvent(positionExpect,this); //checks for events
 		if (eventLocation == -1) {
 			return;
 		}
