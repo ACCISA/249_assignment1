@@ -34,7 +34,7 @@ public class Board {
 	 */
 	private int[] LocationToIndex(int loc) { // TODO
 		int row = (loc -1)/10;
-		int col = (loc -1)%10;//9
+		int col = (loc -1)%10;
 		row = 9 - row; // image the position on the board
 		if (loc > 10) {
 			if (row % 2 != 0)return new int[] {row,col}; // odd rows ignore
@@ -48,7 +48,7 @@ public class Board {
 	 * @return void
 	 */
 	public void SetPlayers(Player ply) {
-		for (int i = 0; i < plys.size(); i++) {
+		for (int i = 0; i < plys.size(); i++) { // go trough the amount of players and assign them to the plys array
 			if (plys.get(i).equals(ply)) {
 				plys.remove(i);
 				plys.add(ply);
@@ -65,15 +65,15 @@ public class Board {
 	public void Show() {
 		System.out.println("===================================================");
 		int[][] locations = new int[plys.size()][2];
-		for (int i = 0; i < plys.size(); i++) {
+		for (int i = 0; i < plys.size(); i++) { // prepare the players location so we can check for them when we print the board
 			int[] boardLocation = LocationToIndex(plys.get(i).getPosition());
 			locations[i] = boardLocation;
 		}
-		for (int i = 0; i < board.length; i++) {
+		for (int i = 0; i < board.length; i++) { // print the 2d array by going from row to row
 			System.out.print("| ");
-			for (int j = 0; j < board[i].length; j++) {
+			for (int j = 0; j < board[i].length; j++) { // go through every column
 				boolean isPlayer = false;
-				for (int k = 0; k < plys.size(); k++){
+				for (int k = 0; k < plys.size(); k++){ // go to the players and look if the board location we are about to print is where a player is located
 				//	smt++;
 					if (i == locations[k][0] && j == locations[k][1]) {
 						System.out.print(plys.get(k).getName().substring(0,2)+" | ");
