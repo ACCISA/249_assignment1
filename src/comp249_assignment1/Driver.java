@@ -1,5 +1,8 @@
 package comp249_assignment1;
-
+//-----------------------------------------------------
+//Assignment 1
+//Written by: Aniss Chalah 40251256, Zubeda Wajid Hameed 40246990
+//-----------------------------------------------------
 import java.io.IOException;
 import java.util.Scanner;
 
