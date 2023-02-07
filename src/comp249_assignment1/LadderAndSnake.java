@@ -79,24 +79,31 @@ public class LadderAndSnake {
         int attempts=0;
         do{
         	attempts++;
-        	int player1 = flipDice();
-        	int player2 = flipDice();
-        	boolean player1Bigger = (player1>player2)? true : false;
-        	boolean isSameValue = (player1==player2)? true : false;
+       
+        	int[] diceRolls = new int[2];
+        	for (int i = 0; i < nbPlayers; i++) {
+        		int roll = flipDice();
+        		diceRolls[i] = roll;
+        	}
+        	boolean player1Bigger = (diceRolls[0]>diceRolls[1])? true : false;
+        	boolean isSameValue = (diceRolls[0] == diceRolls[1])? true : false;
         	if (isSameValue) {
-        		System.out.println(players[0].getName() + " rolled " + player1);
-        		System.out.println(players[1].getName() + " rolled " + player2);
+        		for (int i = 0; i < nbPlayers; i++) {
+            		System.out.println(players[i].getName() + " rolled " + diceRolls[i]);
+        		}
         		System.out.println("A tie achieved between " + players[0].getName() + " and " + players[1].getName() + ". Attempting to break the tie.");
         		continue;
         	}
         	if (player1Bigger) {
-        		System.out.println(players[0].getName() + " rolled " + player1);
-        		System.out.println(players[1].getName() + " rolled " + player2);
+        		for (int i = 0; i < nbPlayers; i++) {
+            		System.out.println(players[i].getName() + " rolled " + diceRolls[i]);
+        		}
         		System.out.println("Reached final decision on order of playing: " + players[0].getName() + " then " + players[1].getName() + ". It took " + attempts + " attempts before a decision could be made.");
         		break;
         	}
-        	System.out.println(players[0].getName() + " rolled " + player1);
-    		System.out.println(players[1].getName() + " rolled " + player2);
+        	for (int i = 0; i < nbPlayers; i++) {
+        		System.out.println(players[i].getName() + " rolled " + diceRolls[i]);
+    		}
     		System.out.println("Reached final decision on order of playing: " + players[1].getName() + " then " + players[0].getName() + ". It took " + attempts + " attempts before a decision could be made.");
     		reversePlayers();
     		break;
@@ -155,10 +162,10 @@ public class LadderAndSnake {
 	 */
 
 	public void play() {
-		Events event = new Events();
+		Events event = new Events(); // populate the events hashmap
 
-		Board boardOut = new Board();
-		for (int i = 0; i < nbPlayers; i++) {
+		Board boardOut = new Board(); // create the board
+		for (int i = 0; i < nbPlayers; i++) { // create the player objects depending on the amount of players playing
 			Player.nbPlayersCreated++;
 			Player player = new Player();
 			players[i] = player;
@@ -168,8 +175,8 @@ public class LadderAndSnake {
 		setPlayOrder();
 	  
 		System.out.println("------");
-		while (!(Player.isGameDone)) {
-			for (int i = 0; i < nbPlayers; i++) {
+		while (!(Player.isGameDone)) { // this actually plays the game.
+			for (int i = 0; i < nbPlayers; i++) { // for every player, wait for input if necesasry then roll the dice, than update the position, then print the board
 				waitForInput(players[i]);
 				int flip = flipDice();
 				System.out.println(players[i].getName() + " rolled " + flip);
