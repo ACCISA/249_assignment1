@@ -50,7 +50,7 @@ public class Events extends LadderAndSnake{
 	 */
 	public static boolean isLadder(int location) {
 		int returnLocation = Integer.parseInt(events.get(location+""));
-		if (location > returnLocation) return false;
+		if (location > returnLocation) return false; // if the location you are going to is smaller than the location you are at then you hit a snake so return false
 		return true;
 	}
 	/**
@@ -79,8 +79,7 @@ public class Events extends LadderAndSnake{
 					System.out.println(Player.allPlayers[i].getName() + " is currently at tile #" + Player.allPlayers[i].getPosition());
 				}
 				if (player.getName().equals(Player.allPlayers[i].getName())) continue;
-				if (Player.allPlayers[i].getPosition() == location) {
-					System.out.println("Pos: " + location);
+				if (Player.allPlayers[i].getPosition() == location) { // you hit another player that was at the same location as you were trying to go to
 					Player.allPlayers[i].setPosition(0);//send him back to 0
 					return location;
 				}
@@ -88,7 +87,7 @@ public class Events extends LadderAndSnake{
 		}
 		
 		String check = events.get(location+"");
-		if ((check == null || (check+"").length() == 0 || (check+"").equals("null"))) {
+		if ((check == null || (check+"").length() == 0 || (check+"").equals("null"))) { // had to do this cus it didnt really work well
 			System.out.println(player.getName()+" is currently at tile #" + location ); // nothing was found, there are no events
 			return location;
 		}
@@ -97,7 +96,7 @@ public class Events extends LadderAndSnake{
 
 		if (isLadder(location)) {
 			System.out.println(player.getName() + " landed on a ladder. Go to tile #"+locationToGo);
-			if (locationToGo == 100) {// hit the ladder that makes you win
+			if (locationToGo == 100) {// hit the ladder that makes you win when you come from the ladder at 80
 				System.out.println("The Game is over. " + player.getName() + " has won!");
 				System.exit(0);
 			}
